@@ -1,0 +1,8 @@
+{
+    "simoahava": {
+        "url": "https://simoahava.com",
+        "title": "//h1[@class=\"postShorten-title\"]/a/text()",
+        "modified": "//div[@class=\"postShorten-wrap\"]//div[@class=\"postShorten-meta post-meta\"]/time/@datetime",
+        "link":  "//h1[@class=\"postShorten-title\"]/a/@href"
+    }
+}
