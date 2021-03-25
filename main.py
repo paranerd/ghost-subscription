@@ -1,3 +1,4 @@
+import os
 import hashlib
 import requests
 import lxml.html
@@ -5,9 +6,10 @@ import jinja2
 from utils.config import ConfigHelper
 from utils.cache import Cache
 from utils.sites import Sites
+from utils import util
 from utils import mail
 
-TEMPLATE_FILE = "templates/base.html"
+TEMPLATES = os.path.join(util.get_project_path(), 'templates')
 
 config = ConfigHelper()
 cache = Cache()
@@ -56,9 +58,9 @@ def update_cache(name, value):
 
 
 def render_html(updates):
-    template_loader = jinja2.FileSystemLoader(searchpath="./")
+    template_loader = jinja2.FileSystemLoader(searchpath=TEMPLATES)
     template_env = jinja2.Environment(loader=template_loader, autoescape=True)
-    template = template_env.get_template(TEMPLATE_FILE)
+    template = template_env.get_template('base.html')
 
     return template.render(updates=updates)
 
